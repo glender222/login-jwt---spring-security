@@ -60,6 +60,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
             // 3. Cargar los detalles del usuario mediante UserDetailsService
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
+
+            boolean isAdmin = userDetails.getAuthorities().stream()
+            .anyMatch(auth -> auth.getAuthority().equals("ADMINISTRADOR"));
+        System.out.println("¿Usuario tiene rol ADMINISTRADOR?: " + isAdmin);
+
+
+
             // 4. Crear el objeto de autenticación para el contexto de seguridad
             UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                     userDetails, null, userDetails.getAuthorities());

@@ -15,31 +15,31 @@ public class SimpleController {
         return ResponseEntity.ok("Acceso concedido para ADMINISTRADOR");
     }
 
-    @PreAuthorize("hasRole('PRACTICANTE')")
+    @PreAuthorize("hasAuthority('PRACTICANTE')")
     @GetMapping("/practicante")
     public ResponseEntity<String> practicanteEndpoint() {
         return ResponseEntity.ok("Acceso concedido para PRACTICANTE");
     }
 
-    @PreAuthorize("hasRole('SECRETARIA')")
+    @PreAuthorize("hasAuthority('SECRETARIA')")
     @GetMapping("/secretaria")
     public ResponseEntity<String> secretariaEndpoint() {
         return ResponseEntity.ok("Acceso concedido para SECRETARIA");
     }
 
-    @PreAuthorize("hasRole('COORDINADOR')")
+    @PreAuthorize("hasAuthority('COORDINADOR')")
     @GetMapping("/coordinador")
     public ResponseEntity<String> coordinadorEndpoint() {
         return ResponseEntity.ok("Acceso concedido para COORDINADOR");
     }
 
-    @PreAuthorize("hasRole('TUTOR_ACADEMICO')")
+    @PreAuthorize("hasAuthority('TUTOR_ACADEMICO')")
     @GetMapping("/tutor")
     public ResponseEntity<String> tutorEndpoint() {
         return ResponseEntity.ok("Acceso concedido para TUTOR_ACADEMICO");
     }
 
-    @PreAuthorize("hasRole('DIRECTORA')")
+    @PreAuthorize("hasAuthority('DIRECTORA')")
     @GetMapping("/directora")
     public ResponseEntity<String> directoraEndpoint() {
         return ResponseEntity.ok("Acceso concedido para DIRECTORA");

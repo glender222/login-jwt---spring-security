@@ -53,16 +53,11 @@ public PasswordEncoder passwordEncoder() {
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                .requestMatchers("/api/admin/**").hasAuthority("ROLE_ADMINISTRADOR")
-                .requestMatchers("/api/practicante/**").hasAuthority("ROLE_PRACTICANTE")
-                .requestMatchers("/api/secretaria/**").hasAuthority("ROLE_SECRETARIA")
-                .requestMatchers("/api/coordinador/**").hasAuthority("ROLE_COORDINADOR")
-                .requestMatchers("/api/tutor/**").hasAuthority("ROLE_TUTOR_ACADEMICO")
-                .requestMatchers("/api/directora/**").hasAuthority("ROLE_DIRECTORA")
                 .anyRequest().authenticated()
             )
             .exceptionHandling(exception -> exception.authenticationEntryPoint(authenticationEntryPoint))
             .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+            System.out.println("JwtAuthenticationFilter agregado al SecurityFilterChain");
 
         return http.build();
     }
