@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class SimpleController {
 
-    @PreAuthorize("hasRole('ADMINISTRADOR')")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     @GetMapping("/admin")
     public ResponseEntity<String> adminEndpoint() {
         return ResponseEntity.ok("Acceso concedido para ADMINISTRADOR");

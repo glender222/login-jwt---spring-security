@@ -25,6 +25,7 @@ public class CustomUserDetailsService implements UserDetailsService{
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // Intentamos cargar al usuario y mostramos un mensaje para depurar
+
         System.out.println("Intentando cargar usuario con nombre: " + username);
 
 
@@ -34,6 +35,7 @@ public class CustomUserDetailsService implements UserDetailsService{
                  System.out.println("Usuario no encontrado: " + username);
                  return new UsernameNotFoundException("Usuario no encontrado con el nombre: " + username);
                     });
+                    System.out.println("Roles cargados para el usuario: " + usuario.getRoles());
 
                     // Verificamos si el usuario fue encontrado y mostramos la información relevante
                     System.out.println("Usuario encontrado: " + usuario.getUsuario() + ", Estado: " + usuario.getEstado());
@@ -44,7 +46,7 @@ public class CustomUserDetailsService implements UserDetailsService{
         Set<GrantedAuthority> authorities = usuario.getRoles().stream()
                 .map(role -> {
                 System.out.println("Rol encontrado para el usuario: " + role.getRol());
-                return new SimpleGrantedAuthority("ROLE_" + role.getRol());
+                return new SimpleGrantedAuthority(role.getRol());
                   })
                 .collect(Collectors.toSet());
                 // Mostrar los roles asignados
