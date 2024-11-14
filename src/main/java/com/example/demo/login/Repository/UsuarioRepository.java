@@ -11,7 +11,7 @@ import com.example.demo.login.Entity.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
-   // Cambia la consulta para usar JOIN FETCH y así cargar los roles del usuario
-    @Query("SELECT u FROM Usuario u JOIN FETCH u.roles WHERE u.usuario = :usuario")
-     Optional<Usuario> findByUsuario(@Param("usuario") String usuario);
+     @Query("SELECT u FROM Usuario u JOIN FETCH u.roles r WHERE u.usuario = :usuario AND r.estado = 'A'")
+    Optional<Usuario> findByUsuario(@Param("usuario") String usuario);
+   
 }
