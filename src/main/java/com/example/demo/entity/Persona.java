@@ -2,7 +2,6 @@ package com.example.demo.entity;
 
 import java.util.Set;
 
-import com.example.demo.login.Entity.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -63,9 +62,7 @@ public class Persona {
     private Practicante practicante;
 
 
-    @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
-    private Usuario usuario;
+    
     
     @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore

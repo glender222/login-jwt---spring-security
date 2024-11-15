@@ -1,7 +1,5 @@
 package com.example.demo.entity;
 
-import com.example.demo.login.Entity.Usuario;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,9 +26,6 @@ public class Log {
     @Column(name = "estado", length = 1)
     private String estado;
     
-    @ManyToOne
-	@JoinColumn(name="id_usuario", nullable = false)
-	@JsonIgnore
-	private Usuario usuario;
+   
 }
 
